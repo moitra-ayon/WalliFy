@@ -1,4 +1,4 @@
-# wallify
+# walify
 
 A wallpaper app
 

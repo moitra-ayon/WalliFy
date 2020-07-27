@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:walify/data/data.dart';
+import 'package:walify/models/categories_model.dart';
 import 'package:walify/widgets/widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -7,6 +9,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeState extends State<HomeScreen> {
+  List<CategoriesModel> categories = new List();
+
+  @override
+  void initState() {
+    categories = getCategories();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,8 +49,47 @@ class _HomeState extends State<HomeScreen> {
                 ],
               ),
             ),
+            SizedBox(
+              height: 16.0,
+            ),
+            Container(
+              height: 80,
+              child: ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: categories.length,
+                itemBuilder: (context, index) {
+                  return CategoriesTile(
+                    title: categories[index].categoryName,
+                    imgURL: categories[index].imgUrl,
+                  );
+                },
+              ),
+            ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class CategoriesTile extends StatelessWidget {
+  final String imgURL, title;
+
+  CategoriesTile({this.imgURL, this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Stack(
+        children: <Widget>[
+          Container(
+            child: Image.network(imgURL),
+          ),
+          Container(
+            child: Text(title),
+          ),
+        ],
       ),
     );
   }
