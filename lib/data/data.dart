@@ -1,5 +1,7 @@
 import 'package:walify/models/categories_model.dart';
 
+String apiKey = "563492ad6f91700001000001b9ad23cd97a04071888558fe7ca15d2b";
+
 List<CategoriesModel> getCategories() {
   List<CategoriesModel> categories = new List();
   CategoriesModel categoriesModel = CategoriesModel();

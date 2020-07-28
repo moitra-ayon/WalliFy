@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Walify - Wallpapers Den',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Color(0xffFEFEFE),
       ),
