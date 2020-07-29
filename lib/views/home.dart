@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:walify/data/data.dart';
 import 'package:walify/models/categories_model.dart';
 import 'package:walify/models/wallpaper_model.dart';
+import 'package:walify/views/search.dart';
 import 'package:walify/widgets/widget.dart';
 import 'package:http/http.dart' as http;
 
@@ -31,6 +32,7 @@ class _HomeState extends State<HomeScreen> {
 
   List<CategoriesModel> categories = new List();
   List<WallpaperModel> wallpapers = new List();
+  TextEditingController searchText = new TextEditingController();
 
   @override
   void initState() {
@@ -62,13 +64,28 @@ class _HomeState extends State<HomeScreen> {
                   children: <Widget>[
                     Expanded(
                       child: TextField(
+                        controller: searchText,
                         decoration: InputDecoration(
                           hintText: "Search",
                           border: InputBorder.none,
                         ),
                       ),
                     ),
-                    Icon(Icons.search),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SearchScreen(
+                              searchText: searchText.text,
+                            ),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        child: Icon(Icons.search),
+                      ),
+                    ),
                   ],
                 ),
               ),
