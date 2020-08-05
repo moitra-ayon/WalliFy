@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:walify/data/data.dart';
 import 'package:walify/models/categories_model.dart';
 import 'package:walify/models/wallpaper_model.dart';
+import 'package:walify/views/categories.dart';
 import 'package:walify/views/search.dart';
+import 'package:walify/views/wallpaper_view.dart';
 import 'package:walify/widgets/widget.dart';
 import 'package:http/http.dart' as http;
 
@@ -16,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeState extends State<HomeScreen> {
   getWallpaper() async {
     var response = await http.get(
-      "https://api.pexels.com/v1/curated?per_page=215",
+      "https://api.pexels.com/v1/curated?per_page=10",
       headers: {"Authorization": apiKey},
     );
 //    print(response.body.toString());
@@ -107,6 +109,7 @@ class _HomeState extends State<HomeScreen> {
                   },
                 ),
               ),
+              creatorName(),
               SizedBox(
                 height: 16.0,
               ),
@@ -126,37 +129,49 @@ class CategoriesTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(right: 4),
-      child: Stack(
-        children: <Widget>[
-          ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: Image.network(
-              imgURL,
-              height: 50,
-              width: 100,
-              fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CategorieScreen(
+              categorieText: title.toLowerCase(),
             ),
           ),
-          Container(
-            decoration: BoxDecoration(
+        );
+      },
+      child: Container(
+        margin: EdgeInsets.only(right: 4),
+        child: Stack(
+          children: <Widget>[
+            ClipRRect(
               borderRadius: BorderRadius.circular(16),
-              color: Colors.black26,
-            ),
-            alignment: Alignment.center,
-            height: 50,
-            width: 100,
-            child: Text(
-              title,
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w500,
-                color: Colors.white,
+              child: Image.network(
+                imgURL,
+                height: 50,
+                width: 100,
+                fit: BoxFit.cover,
               ),
             ),
-          ),
-        ],
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: Colors.black26,
+              ),
+              alignment: Alignment.center,
+              height: 50,
+              width: 100,
+              child: Text(
+                title,
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
