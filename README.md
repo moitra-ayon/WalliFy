@@ -20,3 +20,8 @@ A wallpaper app using wallpaper api. Smooth and lightweight app with daily wallp
 2. View wallpapers with respect to categories.
 3. Download wallpaper.
 
+## Screenshots
+
+![Categories](Screenshot_1599365455.png)    ![Home Screen](Screenshot_1599365476.png)
+
+
