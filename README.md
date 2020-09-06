@@ -23,7 +23,7 @@ A wallpaper app using wallpaper api. Smooth and lightweight app with daily wallp
 ## Screenshots
 
 
-<img src="Screenshot_1599365455.png" alt="Categories" height="325" width="200"/>    <img src="Screenshot_1599365476.png" alt="Home Screen" height="325" width="200"/>
+<img src="Screenshot_1599365455.png" alt="Categories" height="355" width="200"/>    <img src="Screenshot_1599365476.png" alt="Home Screen" height="355" width="200"/>
 
 
 
